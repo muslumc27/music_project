@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <script src="https://kit.fontawesome.com/33465b60d1.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  </head>
+
+
+  <style>
+    ul{
+      list-style: none;
+    }
+    #main-logo{
+        border-radius: 50%;
+    }
+    #navBg{
+        background-image:linear-gradient(rgba(500, 300, 150, 0.5), rgba(400, 100, 600, 0.5)),url(https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png);
+        background-size: contain;
+    }
+    #urunler .card img{
+      width: 100%;
+      height: 300px;
+    }
+    #urunler .card{
+      margin: 10px;
+    }
+    #social li i{
+      font-size: 4rem;
+    }
+    footer{
+      background-image:linear-gradient(rgba(500, 300, 150, 0.5), rgba(400, 100, 600, 0.5));
+    }
+    #resimsiz1{
+        width: 18rem;
+        position: sticky;
+         top: 0;
+    }
+    #resim2{
+        width: 18rem;
+    }
+    .kartlar{
+        width: 18rem;
+    }
+    .left ul{
+        justify-content: center;
+        height: 100%;
+    }
+    .right ul{
+        height: 100%;
+    }
+    @media screen and (max-width:576px) {
+        #resimsiz1{
+            width: 100%;
+        }
+        #resim2{
+            width: 100%;
+        }
+        .kartlar{
+            width: 100%;
+        }
+        .kartlar ul{
+            display: none;
+        }
+        footer{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .left ul{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+  </style>
+  <body>
+
+    <nav id="navBg" class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+        <img id="main-logo" width="80px" height="80px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABJlBMVEX///8AAAAqKiqRkZH8/PzgQzRmZmb09PR8fHxUVFS8vLzW1tbv7+/MzMy/v78XFxdAQEDr6+unp6esrKy0tLSCgoIxMTHc3NwhISEAAwAAAAZdXV2WlpaLi4tPT0+fn59wcHBERERzc3MTExPZ2dk4ODgnJyfbRjHmQDXfQzXhQTtCQkIABQDdRTDkQS/uQjfqoJUPAAAqFRSfMy7PQSrMQTmiOClJGBGRLCjMPC+wPy9oIRmFKiHvQj3AOzmnLi1UGR50KSXKRTHhQEFcHhoxExGSLjJuKR67Nyo9ExLyQi5/LCZIExFXGBNUJiFDHhhkJCMmCAstFQ9XIikAChaHJC2NKR4bEAg5EApaZG3iRyeEZWaekI2dKx7lh3m9mJYtAACucHVMk/IgAAALkElEQVR4nO2bC3PbuBHHRYkU9Zapt2i9ZUskLyJPcZyz4ld8ia+Jk95d0jZp0yZtv/+XKIgXAZB2JEtu5jL7n8kMRZAgftgFdgE4qRQIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAi0tcqZXq+X6enfuh0Pp6EWqvodE9YwYRoI/8AihLPvnvB7tqFpYf0/PvUd9yJVr5O+pzqTb9329ZTR7q0srqCEJdQYu5GyKrXMsFEWb+n4IVNpjFXoTSbNWkW9vyvCTg2NC2t4G1C/jYZPo6USkmuBiNyIGlngrwzqfEwU8Y2x1JRGmledl7pjV4T7tFHWD0l86TYp1SdJhFWBsCoR6vtiLVOWpxHCvNCQckt8UBvtzI6ccMBv6WktruiDo00I9bFST+sWwpjrdNo7JpwKbWzHAQWv0Q83IOyrFTWSCZOmgx0hZqQvUx/qqR/Lkfuk2eX1CXXyZL9oFWvYXfdSiYQF9qFBJsOGwXhHgYwSHuIfFU07wBdThRADWF2tjkvzaxNWRAfQhx3uCzKhxTqSdmHoJfIstD1hhX2ILGiUUdHEj+4xzzlYm5DUw4vMOruSCXOiH4WaaK0dzzQdfI3nkD5uikyIs6u6xnt2sC5hRriWJBGWyFeGQnlvdwldJqqcTjC4PTkRcF9oOXazxrqEuFe0VvFuQmLpw50xJRHiHmsKXclmE6xCeKcguKY5XZOwSGvIF+4iHCs++gCE+EvMM0lfspAQNh+3Ni967GRNQtp4/HRDdFaJsBtV/FCEeAJosLYU+X2iUfibTXeCidchtDRBuSjCiYTkmc4DARISPH8OeEPCX0LUx0OPh8gq51ora7OkZCyTREg+1XpIQjyTCNMnLpjJPzv8J46YzXUJ0XJecHgeH+KE6YckxNNAXTEaD4nNqBVYfdZCkVAYY1OFMKUXm9HbuTghCRbdh1qLI8IprnsctQI3nY8gbDMhv8SbK2FyKq6eommC+oISA4s9Zsl2jJD6xw4XTCqhaiSahdNlD84kdXE0MROLhAe8woNEQqQKcd9anHAkWvchCHGvSsk2Dk0kpyTzrBQecVNKMiGfQpi1E/IY4hX9OGFFtC6RvjufzdDPdEQGslbEdiPDYySWsqyHEI7JPTbVHIjPoNEtpmLpWwjprDaLesUc7O0MMUO6TjIS7U7ctbiFSpqKzWpRQmqzliW0nBOiF8c8ZSO1JHgpC8UtZsViZ3eLp1ST9OlYZhjhmyNmTWV9SoJzLS8zZYe1YVQNIcSJ0F7DClvbJoUHCYRszGujSqlkFcivwx2tLkgPKyakRtSbZMFmqqVkEUQnvz25bNqNCGvs5uF+lu7+0PxaITTVBWmoym4IE1vJlhNUObW0I3av0jvlWURYUF+kKWF8F8OaxZ7caSYe201hZsKqxEtH4ts1saQh5TSlkfIiW2PEdqLMffnB6k7DY0NLEP9Cwr6UvFoVTVVW90vbE+GtQx4QCOFAqqUqPJnb5aawnmDBULVY80VNpCbU8q1qNT2ohTNKDUuYCcvNweFsdjjIRGlByhqGDymOWG7+gCbRaSs/LKXiMnG99YSSu1VsxkcA6/F+oZIZ31Y6zUkzgW6W7pre143gpmUl0YUi6Wt1vXoE3WLAdbT/9dp3KUK4+RIkCnVdW9PsJfrXTaDh9+zlI3aZlWvSzbvtpJPjQrMdHhzeZij+aPyJrQkR2+OjJ97x058SGLuardknK3f17BRdxQjbtey4la6isdaXpsB2rtls5kiWm5+RF8i47vNnzPCZZjMa13o9H6Z308OmvIG1LSGCOjOChWs45ycJNrS7p67jzZ3AuVBtaCkZj7DpRELlBD1zyF8ghDxTN+mqig9qcat2ICbj23vpybnhBq5hLPxLwSuZTj3DcZz5YnFzsZQIS7HeiE5OCWEuZVWjFxTCgQxYGsh1CbPt1oTPfc+fz31j7izOr7TIF7Hspes67txxPNd3j2QbKqFaRGSELeEFmZC+zOxuddS6aHQw221S2ayNtcHGHCO0Pd+b++erFQLxvcfqh57eILbgZ8/3XSP4lZiYEibkC2wwkkb12TfihFnZUvxcb5Blm5c0zVPzKvHkcU3Ck8ULf35+Zb90njiuf6RU+JN/HMyDE+362HecT8dCg4n3VJu1QqVQow3mpyqEkN0l4UUknMiALAHOhPOoSTeO+JmRpA0iFSZEgWJlGN7iF3T9pwD5o/9Y9FJbe2UYrnuBLl978xfuzUtbIEyNokOG0pi8cSASYnX6laKlENINKuW4hnuANY34tyXUtCvHMHwPkdrasT935qIRu9r1OZqAzt/aqPzoE/LiC9FLZZGBNFQJhzxWRoQ9xYJ0UNb473JkxO0JfzYQ4Rt8+dJboPG4FOs78lHpM3z52EVD0X97KyEZlTmFUIiSnJAuSaIc3oyAJOQ2rqlDJ6FZB6ma+O07CO3fAuSj7hI7n71yFo7xUuPzqa15aGwaf+7iIHKJLIxGpH0LYUnsYkYopsuMsKEC0jvxZ+kdcp68+dY4seGJj2LFJU1mPji+FzwVTPhr4LrGSrMx8W8BmnNXMqHV6Gfz+f1Rr2KSdowlQuncjLR6WI4B0nlGjAOksonYd/eMhzYimDuvaaBfosDh+1oU9i9RIHHObEKovfDcOQoYEWFF3CHo4Jf2JEJpkUQIWTAQN0lJsG/mBJFntybsomiPspUVSb6RXi2MeXClLSnhR29uzL1rVnqyQDHxUnvECNVlfJxQWkoq601hCTZOqAhXpm9LiBqNsjX/A6/yCk0sxjNuw98DlOq84qWvw9KVzQjzWoJkQumDCuE0wk/8SyWk1g4IjYXnGNe0wuWjdx5icN538Xza1S4Qf/CGfW+pHYelp9RLaVxO98oH7YNybdSJE0p7FbE9g2jeHz8Uoa39xfcd4wmL8QjsIowdZ/TGX30XZWz8e137zCGxIySkBxoTHu5K6RjhKJlwQlcRfJSS2FCvqKKh5v6E3TBjMfy/Ccn26Sdnbjwh1/YHBIScNFptvHPCcfoRE5JtqllUH0GWCOUjF0aY5esKNnuSDODWXdItvPQ6dMrz96JjrNAqynmuhS6LnfL8VCy9QPwoJIaEJNfoRfWZ1fUIQ+ekB3jMi8u8YNeERwjHuJDWhEe+u1gcY588DcKJRVwvouzcd1wPE5JhKEQ1klt+lZBQ0UHMXie/pF0CITredycqo10b7mKOjCRA2H9Hk4sbvA3zmWMD+aS01sBpuut8+EdKpzYcRfWN1yOkVqfLDrqUJ3mccGKuTwReutTe+E82MqG9PLYg4gwXYUg4Rhdv0KAznHdiaVc7w3b9JyKk28VsR0WnTf4qYUZqNX1cJxNxh//xW7jDwSci4v/aOOyAci21tv712fENz3+pyXobeq5/8f6N5xuOKy8Xuyh1RaU3X8L36fK92TZNs82PWdclZGuGpvg8SvOGlXJhSKvmQ0Dc4BitT/jjDVoN+hcyHwoYlwuUbPt+MDc8w/so72mEiy3X8b+Ef6zJV/hTcQNibUK26KVOIB2BUPHdKPGYehNCx5gv3NcxQg3l16EdjcXCu9JUQu0yeOJjG6aycsFwQ0Kdnv/SgFrXFKWjcSfueW1GaHjPFYRw0nnthYTIjudnCRuoy1cBJZTO3jplfUNCtrBnu1dtOXeT3hW2DDZYH/7oB6u3PMmmwrzXxwGiD9wrdeMtfNZeHt18YR/mAyRj0o6eiU0aSR8kbh3tCLNzBT6jVKLxNlL+ELrN9vWyG/yF9L8//67ah+v5yeXnq1tL//NfXolZqfeGjfjfWN5TeqWeafYaSSeIernQKGx2tLjVycwf4r8U6VvoW7cdBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIND3r/8BNtjjgtbJKDQAAAAASUVORK5CYII=" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" href="#">Anasayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="#">İletişim</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Kategoriler
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+                <a class="dropdown-item" href="#">Gitarlar</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">Kemanlar</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">Piyanolar</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">Üflemeliler</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="#">Perküsyonlar</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button type="button" class="btn btn-outline-light">
+            <i class="fa-solid fa-magnifying-glass" style="color: red; font-size: 2rem; cursor: pointer;"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+    <div class="col-lg-3 col-sm-12">
+        <div class="row">
+        <!-- RESİMSİZ -->
+        <div id="resimsiz1" class="card col-lg-12 col-sm-6 mt-5">
+            <div class="card-body">
+              <h5 class="card-title">Tatil Sepeti</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">Aradığın Tatil Burada</h6>
+              <p class="card-text">Antalya,Bodrum,Yunanistan,Adalar,Kuşadası ve Daha Fazlası... </p>
+              <a href="#" class="card-link">Tatil-Holiday</a>
+              
+            </div>
+          </div>
+
+          <!-- RESİMLİ -->
+          <div id="resim2" class="card col-lg-12 col-sm-6 mt-5">
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-model-unselect-gallery-2-202209_GEO_EMEA?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660753617539" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">100K İphone'dan Birisini Kazanmak İçin Tıklayın</p>
+              <button type="button" class="btn btn-dark">Kazan</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="urunler" class="col-lg-6 col-sm-12">
+        <div class="row">
+        <!-- KART-1 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/ bateri-1.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-2 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/bateri-2.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+            <!-- KART-3 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/gitar-2.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+            <!-- KART-4 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/gitar-4.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+            <!-- KART-5 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/gitar1.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+            <!-- KART-6 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/keman-1.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-7 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/keman-2.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-8 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/ bateri-1.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-9 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/bateri-2.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-10 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/gitar-4.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-11 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/keman-1.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+
+
+            <!-- KART-12 -->
+        <div class="kartlar" class="card col-sm-12">
+            <img src="./image/keman-2.jpeg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/PLpwWly_xe4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-3">
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Canlı Destek
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Canlı Destek</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+        <div class="chat d-flex" style="border-radius: 19px; border: 2px solid black;">
+          <img style="border-radius: 50%;" width="100px" src="https://marketplace.canva.com/EAFEits4-uw/1/0/1600w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-oEqs2yqaL8s.jpg" alt="">
+          <p>Merhaba Destek İçin Buradayım.Hangi ürüne bakmıştınız ?</p>
+        </div>
+
+        <div class="user-chat d-flex mt-5" style="border-radius: 19px; border: 2px solid black;">
+          <img style="border-radius: 50%; justify-content: flex-end;" width="100px" src="https://cdn.ebaumsworld.com/2020/01/13/021823/86172767/lego-star-wars-profile-68.jpg" alt="">
+          <textarea style="width: 100%; height: 100px; border-radius: 18px;" cols="30" rows="10"></textarea>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Gönder</button>
+     
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+</div>
+
+<div class="row">
+  <footer style="height: 230px;" class="d-flex">
+  <div class="left" class="col-lg-6">
+    <ul  class="d-flex flex-column align-items-end">
+      <li>
+        <i class="fa-solid fa-envelope"></i>tolgahan@music.com 
+      </li>
+      <li>
+        <i class="fa-solid fa-envelope"></i> selcuk@music.com
+      </li>
+      <li>
+        <i class="fa-solid fa-phone"></i> +90 555 555 55 55
+        <i class="fa-solid fa-phone"></i> +90 555 555 55 55
+      </li>
+      <li>
+        <i class="fa-sharp fa-solid fa-location-dot"></i>
+        Kızılay/Çankaya/Ankara
+      </li>
+    </ul>
+  </div>
+  <div class="right" class="col-lg-6">
+    <ul id="social" class="d-flex align-items-center">
+      <li>
+        <i class="fa-brands fa-facebook"></i>
+      </li>
+      <li>
+        <i class="fa-brands fa-twitter"></i>
+      </li>
+      <li>
+        <i class="fa-brands fa-youtube"></i>
+      </li>
+      <li>
+        <i class="fa-brands fa-square-instagram"></i>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
